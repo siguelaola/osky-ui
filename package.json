@@ -1,0 +1,24 @@
+{
+  "name": "my-spinner-package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "rm -rf ./dist",
+    "start": "react-scripts start",
+    "build": "tsc --build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postbuild": "mkdir -p ./dist/styles && cp ./src/styles/*.css ./dist/styles/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "css-loader": "^6.7.3",
+    "react": "^18.2.0",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.9.5",
+    "typescript-plugin-css-modules": "^4.2.3"
+  }
+}
