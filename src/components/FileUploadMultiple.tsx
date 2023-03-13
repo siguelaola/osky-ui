@@ -59,4 +59,4 @@ class FileUploadMultiple extends React.Component<
   }
 }
 
-export default FileUploadMultiple;
+export { FileUploadMultiple };

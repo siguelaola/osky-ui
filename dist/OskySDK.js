@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import React from "react";
-import SpinnerComponent from "./components/SpinnerComponent";
+import { SpinnerComponent } from "./components/SpinnerComponent";
 import { StateMachine } from "./components/StateMachine";
 import { API } from "./network/API";
 var OskySDK = /** @class */ (function (_super) {

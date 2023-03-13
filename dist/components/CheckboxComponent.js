@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import React from "react";
-import CheckboxInput from "./CheckboxInput";
+import { CheckboxInput } from "./CheckboxInput";
 var CheckboxComponent = /** @class */ (function (_super) {
     __extends(CheckboxComponent, _super);
     function CheckboxComponent() {

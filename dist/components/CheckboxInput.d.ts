@@ -14,4 +14,4 @@ declare class CheckboxInput extends React.Component<CheckboxBlockData & Checkbox
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     render(): JSX.Element;
 }
-export default CheckboxInput;
+export { CheckboxInput };

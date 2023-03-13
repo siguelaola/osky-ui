@@ -10,4 +10,4 @@ function SpinnerComponent() {
   );
 }
 
-export default SpinnerComponent;
+export { SpinnerComponent };

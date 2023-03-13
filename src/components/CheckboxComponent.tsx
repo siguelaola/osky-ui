@@ -1,5 +1,5 @@
 import React from "react";
-import CheckboxInput from "./CheckboxInput";
+import { CheckboxInput } from "./CheckboxInput";
 import { ComponentProps } from "./ScreenComponent";
 import { CheckboxBlockData, ChecklistBlockData } from "../interfaces/types";
 

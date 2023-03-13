@@ -1,5 +1,5 @@
 import React from "react";
-import SpinnerComponent from "./components/SpinnerComponent";
+import { SpinnerComponent } from "./components/SpinnerComponent";
 import { StateMachine } from "./components/StateMachine";
 import { DashboardData } from "./interfaces/types";
 import { API } from "./network/API";

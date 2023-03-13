@@ -46,5 +46,5 @@ var CheckboxInput = /** @class */ (function (_super) {
     };
     return CheckboxInput;
 }(React.Component));
-export default CheckboxInput;
+export { CheckboxInput };
 //# sourceMappingURL=CheckboxInput.js.map

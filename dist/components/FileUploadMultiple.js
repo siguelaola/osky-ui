@@ -64,5 +64,5 @@ var FileUploadMultiple = /** @class */ (function (_super) {
     };
     return FileUploadMultiple;
 }(React.Component));
-export default FileUploadMultiple;
+export { FileUploadMultiple };
 //# sourceMappingURL=FileUploadMultiple.js.map

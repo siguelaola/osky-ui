@@ -1,51 +1,17 @@
-// {
-//   "compilerOptions": {
-//     "declaration": true,
-//     "esModuleInterop": true,
-//     "jsx": "react",
-//     "lib": ["es6", "dom"],
-//     "module": "commonjs",
-//     "outDir": "dist",
-//     "sourceMap": true,
-//     "target": "es5",
-//     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-//     "typeRoots": [
-//         "./node_modules/@types",
-//         "./typings"
-//     ]
-//   },
-//   "include": ["src", "global.d.ts"],
-// }
-
 {
-    "compilerOptions": {
-      "target": "es5",
-      "lib": ["dom", "dom.iterable", "esnext"],
-    //   "allowJs": true,
-    //   "skipLibCheck": true,
-    //   "strict": true,
-    //   "forceConsistentCasingInFileNames": true,
-    //   "noEmit": true,
-      "esModuleInterop": true,
-      "module": "esnext",
-      "moduleResolution": "node",
-    //   "resolveJsonModule": true,
-    //   "isolatedModules": true,
-      "jsx": "react", //was preserve defaultin nextapp
-    //   "incremental": true,
-      "declaration": true,
-      "outDir": "dist",
-      "sourceMap": true,
-      "plugins": [{ "name": "typescript-plugin-css-modules" }],
-      "typeRoots": [
-          "./node_modules/@types",
-          "./typings"
-      ]
-    },
-    "include": [
-      "src", 
-      "src/**/*.css"],
-      "exclude": ["node_modules"]
-  }
-  
-  
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "typeRoots": ["./node_modules/@types", "./typings"]
+  },
+  "include": ["src", "src/**/*.css"],
+  "exclude": ["node_modules"]
+}

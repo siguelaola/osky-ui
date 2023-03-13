@@ -9,4 +9,4 @@ declare class FileUploadMultiple extends React.Component<{}, {
     handleFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
     render(): JSX.Element;
 }
-export default FileUploadMultiple;
+export { FileUploadMultiple };

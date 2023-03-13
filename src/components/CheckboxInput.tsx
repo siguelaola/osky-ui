@@ -57,4 +57,4 @@ class CheckboxInput extends React.Component<
   }
 }
 
-export default CheckboxInput;
+export { CheckboxInput };

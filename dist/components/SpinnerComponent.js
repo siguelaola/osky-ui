@@ -5,5 +5,5 @@ function SpinnerComponent() {
         React.createElement("div", { className: styles.spinner }),
         React.createElement("div", { className: styles.message }, "Fetching your session...")));
 }
-export default SpinnerComponent;
+export { SpinnerComponent };
 //# sourceMappingURL=SpinnerComponent.js.map
