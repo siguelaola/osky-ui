@@ -1,7 +1,3 @@
-// export {default as API } from './network/API';
-// import API from "./network/API";
-// import SpinnerComponent from "./SpinnerComponent";
-
 export { OskySDK } from './OskySDK'
 export { ButtonComponent } from './components/ButtonComponent'
 export { ButtonLabel } from './components/ButtonLabel'
@@ -15,7 +11,7 @@ export { InputComponent } from './components/InputComponent'
 export { LabelField } from './components/LabelField'
 export { LineComponent } from './components/LineComponent'
 export { PhoneComponent } from './components/PhoneComponent'
-export { PickerComponent } from './components/PickerComponent'
+export { InputSelectComponent } from './components/InputSelectComponent'
 export { ScreenComponent } from './components/ScreenComponent'
 export { SingleChoiceOption } from './components/SingleChoiceOption'
 export { SpinnerComponent } from './components/SpinnerComponent'

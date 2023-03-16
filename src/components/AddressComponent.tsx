@@ -1,10 +1,9 @@
 import React from "react";
-import { TextComponent } from "./TextComponent";
 import { InputComponent } from "./InputComponent";
-import { PickerComponent } from "./PickerComponent";
+import styles from "../styles/AddressComponent.module.css";
 import { ComponentProps } from "./ScreenComponent";
 import { AddressBlockData } from "../interfaces/types";
-import styles from "../styles/AddressComponent.module.css";
+import { CountryComponent } from "./CountryComponent";
 
 interface AddressState {
   address: string;
@@ -22,7 +21,7 @@ class AddressComponent extends React.Component<ComponentProps, AddressState> {
 
     this.config = props.data as AddressBlockData;
 
-    this.state = this.props.value as unknown as AddressState ?? {
+    this.state = (this.props.value as unknown as AddressState) ?? {
       address: null,
       address1: null,
       postalCode: null,
@@ -44,43 +43,19 @@ class AddressComponent extends React.Component<ComponentProps, AddressState> {
   };
 
   render() {
-    const addressText = {
-      id: "address",
-      type: "paragraph",
-      data: {
-        text: "Address",
-      },
-    };
-
-    const postalText = {
-      id: "postalCode",
-      type: "paragraph",
-      data: {
-        text: "Postal Code",
-      },
-    };
-
-    const cityText = {
-      id: "city",
-      type: "paragraph",
-      data: {
-        text: "City",
-      },
-    };
-
-    const countryText = {
-      id: "country",
-      type: "paragraph",
-      data: {
-        text: "Country",
-      },
-    };
-
     const addressInput = {
       id: "address",
       type: "input-text",
       data: {
-        text: "",
+        label: "Address",
+      },
+    };
+
+    const addressInput1 = {
+      id: "address1",
+      type: "input-text",
+      data: {
+        label: "",
       },
     };
 
@@ -88,7 +63,7 @@ class AddressComponent extends React.Component<ComponentProps, AddressState> {
       id: "postalCode",
       type: "input-text",
       data: {
-        text: "",
+        label: "Postal Code",
       },
     };
 
@@ -96,64 +71,51 @@ class AddressComponent extends React.Component<ComponentProps, AddressState> {
       id: "city",
       type: "input-text",
       data: {
-        text: "",
+        label: "City",
       },
     };
 
-    var pickerProps = {
-      id: "country",
-      data: {
-        title: "Select your country",
-        items: [
-          {
-            id: "spain",
-            text: "Spain",
-          },
-          {
-            id: "usa",
-            text: "USA",
-          },
-          {
-            id: "venezuela",
-            text: "Venezuela",
-          },
-          {
-            id: "belgium",
-            text: "Belgium",
-          },
-        ],
-      },
-    };
     return (
       <div className={styles.address}>
         <div className={styles["address-container"]}>
-          <TextComponent {...addressText} onChange={() => {}} />
-          <InputComponent value={this.state.address} onChange={this.handleInputChange} {...addressInput} />
           <InputComponent
-           value={this.state.address1}
-            onChange={(_, value) =>
-              this.handleInputChange("address1", value, true)
-            }
+            value={this.state.address}
+            onChange={this.handleInputChange}
             {...addressInput}
+          />
+          <InputComponent
+            value={this.state.address1}
+            onChange={this.handleInputChange}
+            {...addressInput1}
           />
         </div>
         <div className={`${styles["address-container"]} ${styles.horizontal}`}>
           <div className={`${styles.column} ${styles.column25}`}>
-            <TextComponent {...postalText} onChange={() => {}} />
-            <InputComponent value={this.state.postalCode} onChange={this.handleInputChange} {...zipInput} />
+            <InputComponent
+              value={this.state.postalCode}
+              onChange={this.handleInputChange}
+              {...zipInput}
+            />
           </div>
           <div className={`${styles.column} ${styles.column75}`}>
-            <TextComponent {...cityText} onChange={() => {}} />
-            <InputComponent value={this.state.city} onChange={this.handleInputChange} {...cityInput} />
+            <InputComponent
+              value={this.state.city}
+              onChange={this.handleInputChange}
+              {...cityInput}
+            />
           </div>
         </div>
         <div>
-          <TextComponent {...countryText} onChange={() => {}} />
-          <PickerComponent value={this.state.country} onChange={this.handleInputChange} {...pickerProps} />
+          <CountryComponent
+            id={"country"}
+            value={this.state.country}
+            data={{}}
+            onChange={this.handleInputChange}
+          />
         </div>
       </div>
     );
   }
 }
 
-export { AddressComponent }
+export { AddressComponent };

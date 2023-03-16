@@ -14,7 +14,7 @@ class OskySDK extends React.Component<{}, { isLoading: boolean; session: Dashboa
   }
 
   componentDidMount() {
-    API.getSession("1")
+    API.getSession("ccfe7f50-2f2e-4470-b145-5974d62189b6")
       .then((data: DashboardData) => {
         this.setState({
           session: data,

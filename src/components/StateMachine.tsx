@@ -1,26 +1,39 @@
 import React from "react";
 import { API } from "../network/API";
-import {ScreenComponent, ScreenComponentProps } from "./ScreenComponent";
-import { DashboardData, NodeScreen, StateMachineData, StateMachineProps } from "../interfaces/types";
+import { ScreenComponent, ScreenComponentProps } from "./ScreenComponent";
+import {
+  DashboardData,
+  NodeScreen
+} from "../interfaces/types";
 import { DisclosuresView } from "./DisclosuresView";
 import styles from "../styles/StateMachine.module.css";
+import { LabelField } from "./LabelField";
+
+interface StateMachineData {
+  step: number;
+  currentNode: NodeScreen;
+  information: { [key: string]: any };
+}
+
+interface StateMachineProps {
+  session: DashboardData;
+}
 
 export class StateMachine extends React.Component<
   StateMachineProps,
   StateMachineData
 > {
+  constructor(props: StateMachineProps) {
+    super(props);
 
-    constructor(props: StateMachineProps) {
-        super(props);
-
-        this.state = {
-            step: 0,
-            currentNode:
-              this.props.session.nodes.find((node) => node.id === "node-0") ||
-              this.props.session.nodes[this.state.step],
-            information: {},
-          };
-    }
+    this.state = {
+      step: 0,
+      currentNode:
+        this.props.session.nodes.find((node) => node.id === "node-0") ||
+        this.props.session.nodes[this.state.step],
+      information: {},
+    };
+  }
 
   prevStep = () => {
     const prev_node = this.props.session.edges.find(
@@ -133,6 +146,7 @@ export class StateMachine extends React.Component<
             message="Your information is secure and will not be shared"
           />
         </div>
+        <LabelField label="Powered by Osky" />
       </div>
     );
   }

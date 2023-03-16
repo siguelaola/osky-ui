@@ -1,6 +1,6 @@
-.picker-container {
+.input-select-container {
   position: relative;
-  padding: 8px;
+  padding: 8px 0;
   margin-bottom: 22px;
   border: 1px solid #c7c7cc;
   border-radius: 8px;
@@ -15,12 +15,13 @@
   line-height: 2vh;
 }
 
-.picker-selected {
+.input-select-selected {
   padding: 10px;
   cursor: pointer;
+  min-height: 15px;
 }
 
-.picker-items {
+.input-select-items {
   position: absolute;
   top: 100%;
   left: 0;
@@ -36,14 +37,14 @@
   min-width: min-content;
 }
 
-.picker-option {
+.input-select-option {
   padding: 10px;
   cursor: pointer;
   white-space: nowrap;
   min-width: min-content;
 }
 
-.picker-option:hover {
+.input-select-option:hover {
   background-color: #eee;
   min-width: min-content;
 }

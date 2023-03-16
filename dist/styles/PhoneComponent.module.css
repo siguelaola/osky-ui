@@ -1,8 +1,0 @@
-.phone-container {
-  display: flex;
-  align-items: stretch;
-}
-
-.phone-container > * {
-  margin-right: 10px;
-}

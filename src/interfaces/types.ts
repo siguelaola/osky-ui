@@ -35,12 +35,18 @@ export interface CheckboxBlockData {
     checked: boolean;
 }
 
-export interface PickerBlockData {
-  title: string;
-  items: {
-    id: string;
-    text: string;
+export interface InputSelectBlockData {
+  label: string;
+  defaultValue: ""
+  entries: {
+    value: string;
+    label: string;
   }[];
+}
+
+export interface CountryBlockData {
+    country: string
+    label: string
 }
 
 export interface ToggleOptionBlockData {
@@ -57,7 +63,6 @@ export interface InputBlockData {
   required: boolean;
   isSecure: boolean;
   errorMessage: string;
-  auxiliaryMessage: string;
   validation: string;
   regex: string;
   alignment: "left" | "center" | "right" | "justified";
@@ -99,9 +104,10 @@ export type BlockType =
   | "header"
   | "separator"
   | "checklist"
-  | "picker"
+  | "input-select"
   | "yesno"
   | "input-text"
+  | "country"
 //   | "clickableOption"
 //   | "button"
   | "address"
@@ -117,9 +123,10 @@ export type BlockDataType =
 | ButtonBlockData
 | TextBlockData
 | ChecklistBlockData
-| PickerBlockData
+| InputSelectBlockData
 | ToggleOptionBlockData
 | InputBlockData
+| CountryBlockData
 | ClickableOptionBlockData
 | AddressBlockData
 | DateBlockData
@@ -150,19 +157,4 @@ export interface Edge {
 export interface DashboardData {
     nodes: NodeScreen[];
     edges: Edge[];
-  }  
-
-
-
-
-  //UPDATE INTERFACES
-
-  export interface StateMachineData {
-    step: number;
-    currentNode: NodeScreen;
-    information: { [key: string]: any };
-  }
-  
-  export interface StateMachineProps {
-    session: DashboardData;
-  }
+  } 

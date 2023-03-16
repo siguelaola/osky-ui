@@ -8,18 +8,19 @@ import {
 import { CheckboxComponent } from "./CheckboxComponent";
 import { ImageComponent } from "./ImageComponent";
 import { InputComponent } from "./InputComponent";
-import { PickerComponent } from "./PickerComponent";
+import { InputSelectComponent } from "./InputSelectComponent";
 import { SingleChoiceOption } from "./SingleChoiceOption";
 import { TextComponent } from "./TextComponent";
 import { ToggleOption } from "./ToggleOption";
 import { VideoComponent } from "./VideoComponent";
-
-import styles from "../styles/ScreenComponent.module.css";
 import { ButtonComponent } from "./ButtonComponent";
 import { LineComponent } from "./LineComponent";
 import { DateComponent } from "./DateComponent";
 import { PhoneComponent } from "./PhoneComponent";
-import {AddressComponent} from "./AddressComponent";
+import { AddressComponent } from "./AddressComponent";
+
+import styles from "../styles/ScreenComponent.module.css";
+import { CountryComponent } from "./CountryComponent";
 
 export interface ScreenComponentProps {
   node: NodeScreen;
@@ -35,34 +36,39 @@ export type ComponentProps = {
   onChange: (id: string, value: any, valid: boolean) => void;
 };
 
-type BlockValue = {
-    value: any;
-    enabled: boolean;
-  };
-  
-  type BlockData2 = {
-    [key: string]: BlockValue
-  };
+type ComponentValue = {
+  value: any;
+  enabled: boolean;
+};
 
-interface KYCStepState {
-  blockData: BlockData2;
-  canContinue: boolean;
+type ComponentsData = {
+    // blockData?: { string?: ComponentValue };
+//   [key: string]: {value: any, enabled: boolean};
+};
+
+interface ScreenComponentState {
+    blockData: { string?: {value: any, isValid: boolean}};
+    // blockData: ComponentsData;
+    canContinue: boolean;
 }
 
 class ScreenComponent extends React.Component<
   ScreenComponentProps,
-  KYCStepState
+  ScreenComponentState
 > {
   constructor(props: ScreenComponentProps) {
     super(props);
 
-    const blockData: KYCStepState = { blockData: {}, canContinue: false };
+    const blockData: ScreenComponentState = {
+      blockData: {},
+      canContinue: false,
+    };
 
     if (this.props.values) {
       Object.entries(this.props.values).forEach(([name, value]) => {
         blockData.blockData[name] = { value, enabled: true };
       });
-      blockData.canContinue = true
+      blockData.canContinue = true;
     }
 
     this.state = blockData;
@@ -78,16 +84,14 @@ class ScreenComponent extends React.Component<
     video: VideoComponent,
     "input-text": InputComponent,
     header: TextComponent,
-    picker: PickerComponent,
+    "input-select": InputSelectComponent,
     paragraph: TextComponent,
     separator: LineComponent,
     yesno: ToggleOption,
     checklist: CheckboxComponent,
     phone: PhoneComponent,
-
+    country: CountryComponent,
     // list: LabelField,
-    // clickableOption: LabelField,
-
     address: AddressComponent,
   };
 
@@ -120,7 +124,6 @@ class ScreenComponent extends React.Component<
           onChange={(id: string, value: any, isValid: boolean) => {
             this.handleBlockDataChange(id, value, isValid);
           }}
-          //   onClick={this.nextStep}
         />
       );
     }
@@ -128,21 +131,21 @@ class ScreenComponent extends React.Component<
   };
 
   handleBlockDataChange = (blockId: string, value: any, isValid: boolean) => {
-    // this.setState(
-    //   (prevState) => ({
-    //     blockData: {
-    //       ...prevState.blockData,
-    //       [blockId]: { value, isValid },
-    //     },
-    //   }),
-    //   () => {
-    //     let canContinue = true;
-    //     Object.entries(this.state.blockData).forEach(([, value]) => {
-    //       canContinue = canContinue && value.isValid;
-    //     });
-    //     this.setState({ canContinue: canContinue });
-    //   }
-    // );
+    this.setState(
+      (prevState) => ({
+        blockData: {
+          ...prevState.blockData,
+          [blockId]: { value, isValid },
+        },
+      }),
+      () => {
+        let canContinue = true;
+        Object.entries(this.state.blockData).forEach(([, value]) => {
+          canContinue = canContinue && value.isValid;
+        });
+        this.setState({ canContinue: canContinue });
+      }
+    );
   };
 
   render() {
@@ -162,4 +165,4 @@ class ScreenComponent extends React.Component<
   }
 }
 
-export { ScreenComponent }
+export { ScreenComponent };

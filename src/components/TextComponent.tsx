@@ -2,6 +2,8 @@ import React from "react";
 import { TextBlockData } from "../interfaces/types";
 import { ComponentProps } from "./ScreenComponent";
 import styles from "../styles/LabelField.module.css";
+import parser from "html-react-parser";
+
 
 interface StyleProps {
   text: string;
@@ -19,17 +21,15 @@ class TextComponent extends React.Component<ComponentProps> {
       alignment: (data as TextBlockData).alignment ?? "left",
     };
 
-    const Tag =
+    const Tags =
     config.level !== undefined
-    //   ? (`title${style.level}` as keyof JSX.IntrinsicElements)
-        ? (`title${config.level}`)
-        : "label";
+        ? `${styles.heading} ${styles['h${config.level}']}`
+        : `${styles.label}`
 
     return (
         
-      <div className={`${styles[Tag]} ${styles.text}`} style={{ textAlign: config.alignment }}>
-        {/* <Tag>{style.text}</Tag> */}
-        <span>{config.text}</span>
+      <div className={`${Tags} ${styles.text}`} style={{ textAlign: config.alignment }}>
+        <span>{ parser(config.text) }</span>
       </div>
     );
   }

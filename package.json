@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "rm -rf ./dist",
     "build": "tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postbuild": "mkdir -p ./dist/styles && cp ./src/styles/*.css ./dist/styles/"
@@ -13,11 +12,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "react": "^18.2.0",
-    "css-loader": "^6.7.3",
-    "typescript": "^4.9.5",
-    "style-loader": "^3.3.1",
     "@types/react": "^18.0.28",
+    "css-loader": "^6.7.3",
+    "react": "^18.2.0",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.9.5",
     "typescript-plugin-css-modules": "^4.2.3"
+  },
+  "dependencies": {
+    "country-region-data": "^2.7.0",
+    "html-react-parser": "^3.0.12"
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/PhoneComponent.module.css";
 import { InputComponent } from "./InputComponent";
-import { PickerComponent } from "./PickerComponent";
+import { InputSelectComponent } from "./InputSelectComponent";
 import { ComponentProps } from "./ScreenComponent";
 import { PhoneBlockData } from "../interfaces/types";
 
@@ -86,8 +86,7 @@ class PhoneComponent extends React.Component<ComponentProps, PhoneState> {
 
     return (
       <div className={styles["phone-container"]}>
-        <
-            PickerComponent onChange={this.handlePickerChange} value={countryCode} {...pickerProps} />
+        <InputSelectComponent onChange={this.handlePickerChange} value={countryCode} {...pickerProps} />
         <InputComponent onChange={this.handleInputChange} value={number} {...inputProps} />
       </div>
     );

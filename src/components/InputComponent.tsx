@@ -9,6 +9,7 @@ import { InputBlockData } from "../interfaces/types";
 interface InputState {
   value: string;
   isValid: boolean;
+  focused: boolean;
 }
 
 enum ValidationType {
@@ -52,6 +53,7 @@ class InputComponent extends React.Component<ComponentProps, InputState> {
     this.state = {
         value: currentValue ?? "",
         isValid: currentValue !== "",
+        focused: false
       };
 
     this.validation = (value: string) => {
@@ -88,7 +90,7 @@ class InputComponent extends React.Component<ComponentProps, InputState> {
 
   render() {
     const { value, isValid } = this.state;
-    const showError = !isValid && this.state.value.length > 0;
+    const showError = !isValid && this.state.value.length > 0 && !this.state.focused;
 
     return (
       <div className={styles["validation-container"]}>
@@ -101,6 +103,8 @@ class InputComponent extends React.Component<ComponentProps, InputState> {
           className={styles["input-container"]}
         >
           <input
+            onFocus={() => this.setState({ focused: true })}
+            onBlur={() => this.setState({ focused: false })}
             className={`${styles["input-field"]} ${
                 showError ? styles["input-invalid-border"] : ""
               }`}
@@ -112,7 +116,6 @@ class InputComponent extends React.Component<ComponentProps, InputState> {
           />
 
           {this.config.isSecure && (
-            // <Image className={styles["input-lock"]} src="/lockIcon.svg" alt="Secure"/>
             <img className={styles["input-lock"]} src="/lockIcon.svg" alt="Lock" />
           )}
         </div>
@@ -120,13 +123,6 @@ class InputComponent extends React.Component<ComponentProps, InputState> {
         {showError && (
           <div className={styles["input-error"]}>{this.config.errorMessage}</div>
         )}
-
-        {/* {this.config.auxiliaryMessage && (
-          <LabelField
-            className={styles["input-auxiliar-message"]}
-            label={this.config.auxiliaryMessage}
-          />
-        )} */}
       </div>
     );
   }
